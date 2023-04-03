@@ -1,0 +1,43 @@
+[
+  {
+    "user": {
+      "name": "Harry Potter",
+      "image": "https://i.insider.com/5ece9322f34d050a92546892?width=1000&format=jpeg&auto=webp"
+    },
+    "timestamp": "1h ago",
+    "message": "That was one brilliant film! The special effects were top-notch, the action scenes were thrilling, and the story had me on the edge of my seat the whole time. I loved how they brought the characters to life and captured the essence of the original story. It's definitely a must-see for any fan of the genre!"
+  },
+  {
+    "user": {
+      "name": "Ron Weasley",
+      "image": "https://hemxeoviet.com/wp-content/uploads/2021/04/image-36.png"
+    },
+    "timestamp": "1h ago",
+    "message": "Wow, that movie was wicked! The humor was spot on, the characters were relatable, and the music was fantastic."
+  },
+  {
+    "user": {
+      "name": "Hermione Granger",
+      "image": "https://i.insider.com/60772a1742061500181757bc?width=700"
+    },
+    "timestamp": "1h ago",
+    "message": "I must say, that was a truly remarkable film. The acting was superb, the plot was well-crafted, and the cinematography was stunning. I was thoroughly impressed by the director's ability to bring the story to life on the screen. I highly recommend it to anyone who is looking for a truly engaging and thought-provoking cinematic experience."
+  },
+
+  {
+    "user": {
+      "name": "Professor Albus Dumbledore",
+      "image": "https://femina.wwmindia.com/content/2020/may/harry-potter-lead-thumb1589278576.jpg"
+    },
+    "timestamp": "3h ago",
+    "message": "My dear Harry and friends, while I applaud your adventurous spirit, I must remind you that Hogwarts has a curfew for a reason. As tempting as it may be to stay up late watching movies, I'm afraid I cannot grant exceptions. Next time, try to remember that even wizards need their beauty sleep. Sweet dreams!"
+  },
+  {
+    "user": {
+      "name": "Lord Voldemort",
+      "image": "https://www.rollingstone.de/wp-content/uploads/2015/09/21/10/10275933-1024x611.jpg"
+    },
+    "timestamp": "2h ago",
+    "message": "Harry Potter!"
+  }
+]
