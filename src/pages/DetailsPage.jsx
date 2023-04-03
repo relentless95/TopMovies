@@ -7,7 +7,8 @@ function DetailsPage() {
   // console.log(commentsData);
   const [newmessage, setAddComment] = useState("");
   const [newname, setAddName] = useState("");
-  let newimage = "https://pbs.twimg.com/profile_images/789138937574981632/Us7EZG3q_400x400.jpg";
+  let newimage =
+    "https://pbs.twimg.com/profile_images/789138937574981632/Us7EZG3q_400x400.jpg";
   let newtimestamp = new Date().toLocaleString();
   console.log(newimage, newtimestamp);
 
@@ -25,6 +26,13 @@ function DetailsPage() {
       message: newmessage,
     };
     appendComment(newComment);
+  };
+
+  const deleteComment = (commentAuthor) => {
+    const remainingComments = commentsData.filter((comment) => {
+      return comment.user.name !== commentAuthor;
+    });
+    setComments(remainingComments);
   };
 
   return (
