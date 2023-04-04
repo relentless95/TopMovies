@@ -425,6 +425,9 @@ div .name{
   color: orange;
   margin-bottom: 30px;
 }
+textarea{
+  max-width:600px;
+}
 input, textarea{
   font-family: "Exo 2", sans-serif;
   font-size:14px;
