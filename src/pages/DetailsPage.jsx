@@ -47,6 +47,7 @@ function DetailsPage() {
             image={oneComment.user.image}
             timestamp={oneComment.timestamp}
             message={oneComment.message}
+            deleteComment={deleteComment}
           />
         );
       })}

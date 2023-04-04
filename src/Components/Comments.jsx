@@ -9,7 +9,7 @@ console.log(timestamp.length);
 console.log(timestamp.toDateString());
 let c = timestamp.toDateString();
 
-function Comments({name, image, timestamp, message}) {
+function Comments({name, image, timestamp, message, deleteComment}) {
   return (
     <>
 
@@ -42,7 +42,7 @@ function Comments({name, image, timestamp, message}) {
         </div>
         <p className='message'>{message}</p>
         <div className="actions">
-          <button>delete</button>
+          <button onClick={()=>(deleteComment(name))}>delete</button>
         </div>
       </div>
     </>
