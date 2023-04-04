@@ -3,12 +3,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import axios from "axios";
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
+import SearchBar from "./SearchBar";
 
 const apiURL =
   "https://api.themoviedb.org/3/trending/movie/week?api_key=4d4f24c1de9b6106c77077a3305aa28f";
 function MovieList() {
   const [fetching, setFetching] = useState(true);
   const [movies, setMovies] = useState([]);
+  const [searchTerm, setSearchTerm] = useState("")
 
   useEffect(() => {
     console.log("useEffect-initial render (Mounting!");
@@ -33,6 +35,8 @@ function MovieList() {
       <div>
         <section className="heading">
           <h1>Trending movies</h1>
+          <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>
+
           {fetching && (
             <img
               src={"/images/spinner2.gif"}
@@ -43,7 +47,15 @@ function MovieList() {
         </section>
 
         <div className="main-container">
-          {movies.map((movie) => {
+          {movies
+          .filter((curr)=>{
+            if(searchTerm ==""){
+              return curr;
+            }
+            if(curr.title.toLowerCase().includes(searchTerm.toLowerCase()))
+            {return curr}
+          })
+          .map((movie) => {
             return (
               <div className="card" key={movie.id}>
                 <img

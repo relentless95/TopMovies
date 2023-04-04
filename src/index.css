@@ -446,6 +446,43 @@ input, textarea{
 
 .comment-section button:hover{background-color: #8B4000}
 
+/* searchbar css */
+
+.search-bar{
+  font-family: "Exo 2", sans-serif;
+  width: 700px;
+  max-width: 800px;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  font-size:25px;
+  text-align: left;
+  border-style: none;
+  padding: 0 5px
+
+  /* height: 28px; */
+}
+
+.search-items{
+  display: flex;
+  /* gap: 0; */
+  align-items: center;
+  /* border: 1px solid white; */
+  padding:10px
+
+}
+.search-items>.search-icon{
+  width: 25px;
+  max-width: 25px;
+  background-color: red;
+  height: 26px;
+  margin-top: 20px;
+  margin-bottom: 30px;
+  color: black;
+  padding: 3px;
+  /* border-right-style: none; */
+  border-style: none
+}
+
 
 
 
