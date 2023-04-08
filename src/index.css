@@ -487,3 +487,24 @@ input, textarea{
 
 
 
+/* page under construction */
+.under-construction{
+  /* width: 100%;
+  height: 80vh; */
+  align-items: center;
+  width: 100%;
+  height: 90vh;
+  top: 10%;
+  /* background-color: red; */
+  text-align: center;
+  
+}
+
+.under-construction>img{
+  position: relative;
+  padding: 0;
+  top: 10%;
+  left: 0%;
+  /* z-index: -1; */
+  /* filter: brightness(70%); */
+}

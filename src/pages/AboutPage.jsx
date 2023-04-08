@@ -1,9 +1,12 @@
-import React from 'react'
+import React from "react";
 
 function AboutPage() {
   return (
-    <div>AboutPage</div>
-  )
+    <div className="under-construction">
+      <div >AboutPage</div>
+      <img src={"images/under_con.png"} alt="under-construction" />
+    </div>
+  );
 }
 
-export default AboutPage
+export default AboutPage;
