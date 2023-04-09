@@ -2,13 +2,15 @@ import React, { useEffect, useState } from "react";
 import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import ReactPlayer from "react-player";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faStar } from "@fortawesome/free-solid-svg-icons";
 
 function InfoPage() {
   const { movieId } = useParams();
   console.log("movie-id --->", movieId);
   const [oneMovie, setOneMovie] = useState([]);
   const [credits, setCredits] = useState([]);
-  const [producers, setProducers] = useState([]);
+  // const [producers, setProducers] = useState([]);
   const [trailer, setTrailer] = useState([]);
   const [videosArr, setVideosArr] = useState([]);
   const [movieImages, setMovieImages] = useState([]);
@@ -50,7 +52,7 @@ function InfoPage() {
           (crewMember) => crewMember.job === "Producer"
         );
         setCredits(data);
-        setProducers(producerData);
+        // setProducers(producerData);
       })
       .catch((error) => {
         console.log(error);
@@ -67,7 +69,19 @@ function InfoPage() {
         const videoData = data.results.filter(
           (video) => video.name == "Official Trailer"
         );
-        setTrailer(videoData);
+        console.log("videoData is:", videoData);
+        if (videoData.length == 0) {
+          const trailerData = data.results.find((trailer) => {
+            console.log("the trailer found is:", trailer);
+            return trailer.type == "Trailer";
+          });
+          console.log("trailer is", trailer);
+          console.log(typeof trailer);
+          // const trailerDataFinal = [trailerData]
+          setTrailer([trailerData]);
+        } else {
+          setTrailer(videoData);
+        }
         setVideosArr(data.results);
       })
       .catch((error) => {
@@ -107,51 +121,82 @@ function InfoPage() {
 
       {!fetching &&
         trailer.length > 0 &&
-        producers.length > 0 &&
+        // producers.length > 0 &&
         movieImages.length > 0 && (
           <>
-            <img
-              src={
-                "https://image.tmdb.org/t/p/original" +
-                `${oneMovie.poster_path}`
-              }
-              style={{ width: "300px", height: "400px" }}
-            />
-            <h3>{oneMovie.title}</h3>
-            <p>movie rating</p>
-            <span>
-              {(oneMovie.vote_count / (oneMovie.vote_count + 25000)) *
-                oneMovie.vote_average +
-                (25000 / (oneMovie.vote_count + 25000)) * 6.9}
-            </span>
-            <p>{oneMovie.release_date}</p>
+            <div className="details-container">
+              <div>
+                <img
+                  src={
+                    "https://image.tmdb.org/t/p/original" +
+                    `${oneMovie.poster_path}`
+                  }
+                  className="movie-image"
+                  // style={{ width: "300px", height: "400px" }}
+                />
+              </div>
+              <div className="text-details">
+                <h1 className="details-title">{oneMovie.title}</h1>
+                <div className="movie-xtics">
+                  <span>
+                    movie rating <FontAwesomeIcon icon={faStar} />
+                    {Math.round(
+                      ((oneMovie.vote_count / (oneMovie.vote_count + 25000)) *
+                        oneMovie.vote_average +
+                        (25000 / (oneMovie.vote_count + 25000)) * 6.9) *
+                        10
+                    ) / 10}
+                  </span>
+                  <span>{oneMovie.release_date}</span>
+                  <span className="tags">
+                    <ul>
+                      {oneMovie.genres.map((genre) => {
+                        return <li key={genre.id}>{genre.name}</li>;
+                      })}
+                    </ul>
+                  </span>
+                </div>
 
-            <ul>
-              {oneMovie.genres.map((genre) => {
-                return <li key={genre.id}>{genre.name}</li>;
-              })}
-            </ul>
+                <div className="movie-overview">
+                  <p>{oneMovie.overview}</p>
+                </div>
 
-            <p>{oneMovie.overview}</p>
-            <p>movie length: {oneMovie.runtime}</p>
+                <div className="runtime">
+                  <p>runtime: {oneMovie.runtime} min</p>
+                </div>
 
-            <h6>Featured Crew</h6>
-            <div>
-              {producers.length > 0 &&
-                producers.slice(0, 3).map((obj) => {
-                  return <p key={obj.id}>{obj.name}</p>;
-                })}
+                <h3 className="crew">Featured Crew</h3>
+                <div className="crew-members">
+                  {credits.crew.slice(0, 5).map((member) => {
+                    return (
+                      <div key={member.id}>
+                        <p>{member.name}</p>
+                        <p>{member.job}</p>
+                      </div>
+                    );
+                  })}
+                  {/* {producers.length > 0 &&
+                    producers.slice(0, 3).map((obj) => {
+                      return (
+                        <div key={obj.id}>
+                          <p>{obj.name}</p>
+                        </div>
+                      );
+                    })} */}
+                </div>
+                <button className="trailer-button">
+                  {trailer.length > 0 && (
+                    <a
+                      href={`https://www.youtube.com/watch?v=${trailer[0]["key"]}`}
+                      target="_blank"
+                    >
+                      video
+                    </a>
+                  )}
+                </button>
+              </div>
             </div>
-            <div>
-              {trailer.length > 0 && (
-                <a
-                  href={`https://www.youtube.com/watch?v=${trailer[0]["key"]}`}
-                  target="_blank"
-                >
-                  video
-                </a>
-              )}
-            </div>
+
             <div>
               <ReactPlayer
                 url={`https://www.youtube.com/watch?v=${trailer[0]["key"]}`}
@@ -188,7 +233,7 @@ function InfoPage() {
                 return (
                   <img
                     src={
-                      "https://image.tmdb.org/t/p/w342/" + `${movie.file_path}`
+                      "https://image.tmdb.org/t/p/w500/" + `${movie.file_path}`
                     }
                   />
                 );
