@@ -114,18 +114,22 @@ function InfoPage() {
 
   return (
     <div className="info-main-container">
-      <h1>InfoPage</h1>
+      {/* <h1>InfoPage</h1> */}
       {fetching && (
-        <img src={"/images/spinner2.gif"} alt="spinner" className="spinner" />
+        <div className="center-spinner">
+          <img src={"/images/spinner2.gif"} alt="spinner" className="spinner" />
+        </div>
+        
       )}
 
       {!fetching &&
         trailer.length > 0 &&
+        // credits.length > 0 &&
         // producers.length > 0 &&
         movieImages.length > 0 && (
           <>
             <div className="details-container">
-              <div >
+              <div>
                 <img
                   src={
                     "https://image.tmdb.org/t/p/original" +
@@ -163,7 +167,7 @@ function InfoPage() {
 
                 <div className="movie-overview">
                   <p>synopsis: </p>
-                  
+
                   <p>{oneMovie.overview}</p>
                 </div>
 
@@ -173,14 +177,15 @@ function InfoPage() {
 
                 <h3 className="crew">Featured Crew</h3>
                 <div className="crew-members">
-                  {credits.crew.slice(0, 5).map((member, index) => {
-                    return (
-                      <div key={index}>
-                        <p>{member.name}</p>
-                        <p>{member.job}</p>
-                      </div>
-                    );
-                  })}
+                  {credits &&
+                    credits.crew.slice(0, 5).map((member, index) => {
+                      return (
+                        <div key={index}>
+                          <p>{member.name}</p>
+                          <p>{member.job}</p>
+                        </div>
+                      );
+                    })}
                   {/* {producers.length > 0 &&
                     producers.slice(0, 3).map((obj) => {
                       return (
@@ -229,9 +234,10 @@ function InfoPage() {
                           `${actor.profile_path}`
                         }
                         alt="actor"
+                        class="actor-image"
                       />
                       <div className="actorcard-content">
-                        <p>{actor.name}</p>
+                        <h3>{actor.name}</h3>
                         <p>character: {actor.character}</p>
                       </div>
                     </div>
