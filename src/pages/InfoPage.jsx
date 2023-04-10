@@ -3,7 +3,7 @@ import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import ReactPlayer from "react-player";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faStar } from "@fortawesome/free-solid-svg-icons";
+import { faCirclePlay, faStar } from "@fortawesome/free-solid-svg-icons";
 
 function InfoPage() {
   const { movieId } = useParams();
@@ -148,12 +148,12 @@ function InfoPage() {
                     ) / 10}
                   </span>
                   <span>{oneMovie.release_date}</span>
-                  <span className="tags">
-                    <ul>
+                  <span>
+                    <div>
                       {oneMovie.genres.map((genre) => {
-                        return <li key={genre.id}>{genre.name}</li>;
+                        return <p key={genre.id} className="tags">{genre.name}</p>;
                       })}
-                    </ul>
+                    </div>
                   </span>
                 </div>
 
@@ -184,20 +184,22 @@ function InfoPage() {
                       );
                     })} */}
                 </div>
-                <button className="trailer-button">
-                  {trailer.length > 0 && (
-                    <a
-                      href={`https://www.youtube.com/watch?v=${trailer[0]["key"]}`}
-                      target="_blank"
-                    >
-                      video
-                    </a>
-                  )}
-                </button>
+                <div className="trailer-link">
+                  <button className="trailer-button">
+                    {trailer.length > 0 && (
+                      <a
+                        href={`https://www.youtube.com/watch?v=${trailer[0]["key"]}`}
+                        target="_blank"
+                      >
+                        <FontAwesomeIcon icon={faCirclePlay} /> Watch trailer
+                      </a>
+                    )}
+                  </button>
+                </div>
               </div>
             </div>
 
-            <div>
+            <div className="video-previewer">
               <ReactPlayer
                 url={`https://www.youtube.com/watch?v=${trailer[0]["key"]}`}
                 playing
