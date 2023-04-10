@@ -113,8 +113,8 @@ function InfoPage() {
   // console.log("videosArr is: ",videosArr)
 
   return (
-    <>
-      <div>InfoPage</div>
+    <div className="info-main-container">
+      <h1>InfoPage</h1>
       {fetching && (
         <img src={"/images/spinner2.gif"} alt="spinner" className="spinner" />
       )}
@@ -125,7 +125,7 @@ function InfoPage() {
         movieImages.length > 0 && (
           <>
             <div className="details-container">
-              <div>
+              <div >
                 <img
                   src={
                     "https://image.tmdb.org/t/p/original" +
@@ -151,13 +151,19 @@ function InfoPage() {
                   <span>
                     <div>
                       {oneMovie.genres.map((genre) => {
-                        return <p key={genre.id} className="tags">{genre.name}</p>;
+                        return (
+                          <p key={genre.id} className="tags">
+                            {genre.name}
+                          </p>
+                        );
                       })}
                     </div>
                   </span>
                 </div>
 
                 <div className="movie-overview">
+                  <p>synopsis: </p>
+                  
                   <p>{oneMovie.overview}</p>
                 </div>
 
@@ -167,9 +173,9 @@ function InfoPage() {
 
                 <h3 className="crew">Featured Crew</h3>
                 <div className="crew-members">
-                  {credits.crew.slice(0, 5).map((member) => {
+                  {credits.crew.slice(0, 5).map((member, index) => {
                     return (
-                      <div key={member.id}>
+                      <div key={index}>
                         <p>{member.name}</p>
                         <p>{member.job}</p>
                       </div>
@@ -198,44 +204,48 @@ function InfoPage() {
                 </div>
               </div>
             </div>
-
-            <div className="video-previewer">
-              <ReactPlayer
-                url={`https://www.youtube.com/watch?v=${trailer[0]["key"]}`}
-                playing
-                controls
-                volume={0.3}
-                light={true}
-              />
+            <div className="trailer-section">
+              <h1>Watch the trailer here</h1>
+              <div className="video-previewer">
+                <ReactPlayer
+                  url={`https://www.youtube.com/watch?v=${trailer[0]["key"]}`}
+                  playing
+                  controls
+                  volume={0.3}
+                  light={true}
+                />
+              </div>
             </div>
 
-            <h6>cast info</h6>
-            <div className="info-container">
-              {credits.cast.slice(0, 5).map((actor) => {
-                return (
-                  <div className="actor-card" key={actor.id}>
-                    <img
-                      src={
-                        "https://image.tmdb.org/t/p/w185/" +
-                        `${actor.profile_path}`
-                      }
-                      alt="actor"
-                    />
-                    <div className="actorcard-content">
-                      <p>{actor.name}</p>
-                      <p>character: {actor.character}</p>
+            <div className="cast-info">
+              <h1>cast info</h1>
+              <div className="info-container">
+                {credits.cast.slice(0, 5).map((actor) => {
+                  return (
+                    <div className="actor-card" key={actor.id}>
+                      <img
+                        src={
+                          "https://image.tmdb.org/t/p/w185/" +
+                          `${actor.profile_path}`
+                        }
+                        alt="actor"
+                      />
+                      <div className="actorcard-content">
+                        <p>{actor.name}</p>
+                        <p>character: {actor.character}</p>
+                      </div>
                     </div>
-                  </div>
-                );
-              })}
+                  );
+                })}
+              </div>
             </div>
-            <p>images</p>
+            <h1 class="image-title">images</h1>
             <div className="images-container">
               {movieImages.slice(0, 7).map((movie) => {
                 return (
                   <img
                     src={
-                      "https://image.tmdb.org/t/p/w500/" + `${movie.file_path}`
+                      "https://image.tmdb.org/t/p/w400/" + `${movie.file_path}`
                     }
                   />
                 );
@@ -245,7 +255,7 @@ function InfoPage() {
         )}
 
       <Link to="/home">Back</Link>
-    </>
+    </div>
   );
 }
 
