@@ -245,7 +245,7 @@ function InfoPage() {
                 })}
               </div>
             </div>
-            <h1 class="image-title">images</h1>
+            <h1 className="image-title">images</h1>
             <div className="images-container">
               {movieImages.slice(0, 7).map((movie) => {
                 return (
