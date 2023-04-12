@@ -105,7 +105,7 @@ function InfoPage() {
   }, [movieId]);
   // console.log("movie images are", movieImages)
 
-  // console.log(credits)
+  // console.log("credits is", credits.length)
   // console.log(credits.crew);
   // console.log("producers are:", producers);
   // console.log(credits.cast.slice(0,5))
@@ -124,7 +124,7 @@ function InfoPage() {
 
       {!fetching &&
         trailer.length > 0 &&
-        // credits.length > 0 &&
+        credits !== undefined &&
         // producers.length > 0 &&
         movieImages.length > 0 && (
           <>
@@ -234,7 +234,7 @@ function InfoPage() {
                           `${actor.profile_path}`
                         }
                         alt="actor"
-                        class="actor-image"
+                        className="actor-image"
                       />
                       <div className="actorcard-content">
                         <h3>{actor.name}</h3>
