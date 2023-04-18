@@ -16,6 +16,7 @@ function NavBar() {
 
           <NavLink to="/home" className={({isActive})=> isActive ? "selected": ""}>Home</NavLink>
           <NavLink to="/about" className={({isActive})=> isActive ? "selected": ""}> About</NavLink>
+          <NavLink to="/latest" className={({isActive})=> isActive ? "selected": ""}>Latest Movies</NavLink>
           <NavLink to="/contactUs" className={({isActive})=> isActive ? "selected": ""}>Contact Us</NavLink>
 
         </ul>

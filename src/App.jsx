@@ -60,6 +60,7 @@ import ContactPage from "./pages/ContactPage";
 import ExplorePage from "./pages/ExplorePage";
 import Footer from "./Components/Footer";
 import InfoPage from "./pages/InfoPage";
+import LatestPage from "./pages/LatestPage";
 
 // import comments from "./comments.json"
 
@@ -80,6 +81,8 @@ function App() {
         <Route path="/about" element={<AboutPage />} />
         <Route path="/details" element={<DetailsPage />} />
         <Route path="/movie/:movieId" element={<InfoPage />} />
+        <Route path="/latest" element={<LatestPage />} />
+        <Route path="/contactUs" element={<ContactPage />} />
         <Route path="/contactUs" element={<ContactPage />} />
         <Route path="*" element={<ErrorPage />} />
       </Routes>
