@@ -1,3 +1,5 @@
+// everything here can be deleted this component is not used
+
 import { useEffect, useState } from "react";
 import axios from "axios";
 
