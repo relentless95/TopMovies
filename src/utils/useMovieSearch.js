@@ -8,16 +8,14 @@ function useMovieSearch(query, pageNumber) {
   const [error, setError] = useState(false);
   const [movies, setMovies] = useState([]);
   const [hasMore, setHasMore] = useState(false);
-
-
-
+  const API_KEY = import.meta.env.VITE_API_KEY;
 
 useEffect(() => {
   setfetching(true);
   console.log("victor is ugly")
   axios
     .get(
-      `https://api.themoviedb.org/3/movie/upcoming?api_key=4d4f24c1de9b6106c77077a3305aa28f&language=en-US&page=${pageNumber}`
+      `https://api.themoviedb.org/3/movie/upcoming?api_key=${API_KEY}&language=en-US&page=${pageNumber}`
     )
     .then((response) => {
       console.log("the response data is:",response.data);

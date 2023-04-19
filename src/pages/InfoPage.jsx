@@ -5,6 +5,8 @@ import ReactPlayer from "react-player";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faCirclePlay, faStar } from "@fortawesome/free-solid-svg-icons";
 
+
+
 function InfoPage() {
   const { movieId } = useParams();
   console.log("movie-id --->", movieId);
@@ -19,6 +21,8 @@ function InfoPage() {
   const [isfetchingVideos, setFetchingVideos] = useState(true);
   const [isfetchingImages, setFetchingImages] = useState(true);
 
+  const API_KEY = import.meta.env.VITE_API_KEY;
+
   // to calculate movie rating
   //   v = 459 (number of votes)
   // m = 25000 (minimum number of votes required to be listed in IMDb's Top Rated Movies)
@@ -30,7 +34,7 @@ function InfoPage() {
   useEffect(() => {
     axios
       .get(
-        `https://api.themoviedb.org/3/movie/${movieId}?api_key=4d4f24c1de9b6106c77077a3305aa28f&language=en-US`
+        `https://api.themoviedb.org/3/movie/${movieId}?api_key=${API_KEY}&language=en-US`
       )
       .then((response) => {
         console.log(response.data);
@@ -46,7 +50,7 @@ function InfoPage() {
 
   useEffect(() => {
     axios(
-      `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=4d4f24c1de9b6106c77077a3305aa28f&language=en-US`
+      `https://api.themoviedb.org/3/movie/${movieId}/credits?api_key=${API_KEY}&language=en-US`
     )
       .then((response) => {
         // console.log(response.data)
@@ -65,7 +69,7 @@ function InfoPage() {
 
   useEffect(() => {
     axios(
-      `https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=4d4f24c1de9b6106c77077a3305aa28f&language=en-US`
+      `https://api.themoviedb.org/3/movie/${movieId}/videos?api_key=${API_KEY}&language=en-US`
     )
       .then((response) => {
         const data = response.data;
@@ -118,7 +122,7 @@ function InfoPage() {
 
   useEffect(() => {
     axios(
-      `https://api.themoviedb.org/3/movie/${movieId}/images?api_key=4d4f24c1de9b6106c77077a3305aa28f&&include_image_language=en,null`
+      `https://api.themoviedb.org/3/movie/${movieId}/images?api_key=${API_KEY}&include_image_language=en,null`
     )
       .then((response) => {
         const data = response.data;
