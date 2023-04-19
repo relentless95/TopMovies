@@ -14,7 +14,10 @@ function InfoPage() {
   const [trailer, setTrailer] = useState([]);
   const [videosArr, setVideosArr] = useState([]);
   const [movieImages, setMovieImages] = useState([]);
-  const [fetching, setFetching] = useState(true);
+  const [isfetchingMovies, setFetchingMovies] = useState(true);
+  const [isfetchingCredits, setFetchingCredits] = useState(true);
+  const [isfetchingVideos, setFetchingVideos] = useState(true);
+  const [isfetchingImages, setFetchingImages] = useState(true);
 
   // to calculate movie rating
   //   v = 459 (number of votes)
@@ -34,7 +37,7 @@ function InfoPage() {
         const data = response.data;
 
         setOneMovie(data);
-        setFetching(false);
+        setFetchingMovies(false); // <----- comment this out
       })
       .catch((error) => {
         console.log(error);
@@ -53,6 +56,7 @@ function InfoPage() {
         );
         setCredits(data);
         // setProducers(producerData);
+        setFetchingCredits(false); // <----- comment this out
       })
       .catch((error) => {
         console.log(error);
@@ -71,24 +75,46 @@ function InfoPage() {
         );
         console.log("videoData is:", videoData);
         if (videoData.length == 0) {
+          console.log("video not found"); // to remove
           const trailerData = data.results.find((trailer) => {
             console.log("the trailer found is:", trailer);
             return trailer.type == "Trailer";
           });
-          console.log("trailer is", trailer);
-          console.log(typeof trailer);
+          console.log("trailer is", trailerData);
+          console.log("video data is:", videoData);
+
           // const trailerDataFinal = [trailerData]
-          setTrailer([trailerData]);
+
+          // will probably delete this smal block
+          if (trailerData.length == undefined) {
+            console.log("trailer exists", trailerData);
+            setTrailer([trailerData]);
+            console.log("what i am looking for", trailer);
+          } else {
+            // console.log("reached here in the else block")
+            setTrailer([]);
+          }
+          //delete until here
+
+          // setTrailer([trailerData]);
+          console.log(trailer);
+        }
+        // add else if statement here
+        else if (videoData.length == 0) {
+          setTrailer([]);
+          console.log("reached here");
         } else {
           setTrailer(videoData);
         }
         setVideosArr(data.results);
+        setFetchingVideos(false); // <----- comment this out
       })
       .catch((error) => {
         console.log(error);
       });
   }, [movieId]);
-  console.log(trailer);
+
+  console.log("the trailer is:", trailer.length);
 
   useEffect(() => {
     axios(
@@ -98,14 +124,17 @@ function InfoPage() {
         const data = response.data;
         console.log(data);
         setMovieImages(data.backdrops);
+        setFetchingImages(false); // <----- comment this out
       })
       .catch((error) => {
         console.log(error);
       });
   }, [movieId]);
-  // console.log("movie images are", movieImages)
+  console.log("movie images are", movieImages);
 
   // console.log("credits is", credits.length)
+  console.log("credits is", credits);
+
   // console.log(credits.crew);
   // console.log("producers are:", producers);
   // console.log(credits.cast.slice(0,5))
@@ -115,18 +144,27 @@ function InfoPage() {
   return (
     <div className="info-main-container">
       {/* <h1>InfoPage</h1> */}
-      {fetching && (
-        <div className="center-spinner">
-          <img src={"/images/spinner2.gif"} alt="spinner" className="spinner" />
-        </div>
-        
-      )}
+      {isfetchingMovies &&
+        isfetchingCredits &&
+        isfetchingVideos &&
+        isfetchingImages && (
+          <div className="center-spinner">
+            <img
+              src={"/images/spinner2.gif"}
+              alt="spinner"
+              className="spinner"
+            />
+          </div>
+        )}
 
-      {!fetching &&
-        trailer.length > 0 &&
-        credits !== undefined &&
-        // producers.length > 0 &&
-        movieImages.length > 0 && (
+      {!isfetchingMovies &&
+        !isfetchingCredits &&
+        !isfetchingVideos &&
+        !isfetchingImages && (
+          // trailer.length > 0 &&
+          // credits !== undefined &&
+          // producers.length > 0 &&
+          // movieImages.length > 0 &&
           <>
             <div className="details-container">
               <div>
@@ -177,15 +215,29 @@ function InfoPage() {
 
                 <h3 className="crew">Featured Crew</h3>
                 <div className="crew-members">
-                  {credits &&
-                    credits.crew.slice(0, 5).map((member, index) => {
-                      return (
-                        <div key={index}>
-                          <p>{member.name}</p>
-                          <p>{member.job}</p>
-                        </div>
-                      );
-                    })}
+                  {credits?.crew.length == 0 ? (
+                    <h1>Nothing in here</h1>
+                  ) : (
+                    <>
+                      {credits?.crew.slice(0, 5).map((member, index) => {
+                        return (
+                          <div key={index}>
+                            <p>{member.name}</p>
+                            <p>{member.job}</p>
+                          </div>
+                        );
+                      })}
+                    </>
+                  )}
+                  {/* {credits &&
+                  credits?.crew.slice(0, 5).map((member, index) => {
+                    return (
+                      <div key={index}>
+                        <p>{member.name}</p>
+                        <p>{member.job}</p>
+                      </div>
+                    );
+                  })} */}
                   {/* {producers.length > 0 &&
                     producers.slice(0, 3).map((obj) => {
                       return (
@@ -197,21 +249,44 @@ function InfoPage() {
                 </div>
                 <div className="trailer-link">
                   <button className="trailer-button">
-                    {trailer.length > 0 && (
+                    {trailer.length == 0 ? (
+                      <h1>Link not available</h1>
+                    ) : (
+                      <a
+                        href={`https://www.youtube.com/watch?v=${trailer[0]?.key}`}
+                        target="_blank"
+                      >
+                        <FontAwesomeIcon icon={faCirclePlay} /> Watch trailer
+                      </a>
+                    )}
+                    {/* {trailer.length > 0 && (
                       <a
                         href={`https://www.youtube.com/watch?v=${trailer[0]["key"]}`}
                         target="_blank"
                       >
                         <FontAwesomeIcon icon={faCirclePlay} /> Watch trailer
                       </a>
-                    )}
+                    )} */}
                   </button>
                 </div>
               </div>
             </div>
             <div className="trailer-section">
               <h1>Watch the trailer here</h1>
-              <div className="video-previewer">
+              {trailer.length == 0 ? (
+                <h1>Video not available</h1>
+              ) : (
+                <div className="video-previewer">
+                  <ReactPlayer
+                    url={`https://www.youtube.com/watch?v=${trailer[0]?.key}`}
+                    playing
+                    controls
+                    volume={0.3}
+                    light={true}
+                  />
+                </div>
+              )}
+              {/* <div className="video-previewer">
                 <ReactPlayer
                   url={`https://www.youtube.com/watch?v=${trailer[0]["key"]}`}
                   playing
@@ -219,34 +294,71 @@ function InfoPage() {
                   volume={0.3}
                   light={true}
                 />
-              </div>
+              </div> */}
             </div>
 
             <div className="cast-info">
               <h1>cast info</h1>
               <div className="info-container">
+                {/* {credits ? <h1>No credits available please refresh</h1> : <></>} */}
                 {credits.cast.slice(0, 5).map((actor) => {
                   return (
-                    <div className="actor-card" key={actor.id}>
-                      <img
-                        src={
-                          "https://image.tmdb.org/t/p/w185/" +
-                          `${actor.profile_path}`
-                        }
-                        alt="actor"
-                        className="actor-image"
-                      />
-                      <div className="actorcard-content">
-                        <h3>{actor.name}</h3>
-                        <p>character: {actor.character}</p>
+                    <>
+                      <div className="actor-card" key={actor.id}>
+                        {/* <h6>{actor.profile_path} </h6> */}
+                        {/* {console.log("actor.profile_path", actor.profile_path)} */}
+                        {actor.profile_path == null ? (
+                          <img
+                            src={"/images/Profile_placeholder2.png"}
+                            alt="profile image"
+                            className="actor-image"
+                          />
+                        ) : (
+                          <img
+                            src={
+                              "https://image.tmdb.org/t/p/w185/" +
+                              `${actor.profile_path}`
+                            }
+                            alt="actor"
+                            className="actor-image"
+                          />
+                        )}
+                        {/* <img
+                          src={
+                            "https://image.tmdb.org/t/p/w185/" +
+                            `${actor.profile_path}`
+                          }
+                          alt="actor"
+                          className="actor-image"
+                        /> */}
+                        <div className="actorcard-content">
+                          <h3>{actor.name}</h3>
+                          <p>character: {actor.character}</p>
+                        </div>
                       </div>
-                    </div>
+                    </>
                   );
                 })}
               </div>
             </div>
             <h1 className="image-title">images</h1>
-            <div className="images-container">
+            {movieImages.length == 0 ? (
+              <h1>No images here</h1>
+            ) : (
+              <div className="images-container">
+                {movieImages?.slice(0, 7).map((movie) => {
+                  return (
+                    <img
+                      src={
+                        "https://image.tmdb.org/t/p/w400/" +
+                        `${movie.file_path}`
+                      }
+                    />
+                  );
+                })}
+              </div>
+            )}
+            {/* <div className="images-container">
               {movieImages.slice(0, 7).map((movie) => {
                 return (
                   <img
@@ -256,7 +368,7 @@ function InfoPage() {
                   />
                 );
               })}
-            </div>
+            </div> */}
           </>
         )}
 
