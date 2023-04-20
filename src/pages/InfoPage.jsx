@@ -3,9 +3,12 @@ import { Link, useParams } from "react-router-dom";
 import axios from "axios";
 import ReactPlayer from "react-player";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faCirclePlay, faStar } from "@fortawesome/free-solid-svg-icons";
-
-
+import {
+  faChevronLeft,
+  faChevronRight,
+  faCirclePlay,
+  faStar,
+} from "@fortawesome/free-solid-svg-icons";
 
 function InfoPage() {
   const { movieId } = useParams();
@@ -376,7 +379,12 @@ function InfoPage() {
           </>
         )}
 
-      <Link to="/home">Back</Link>
+      <span className="back-button" title="return to home page">
+        <Link to="/home" className="back-btn">
+          Return
+          <FontAwesomeIcon icon={faChevronRight} className="chevron-left" />
+        </Link>
+      </span>
     </div>
   );
 }

@@ -64,10 +64,12 @@ function LatestPage() {
 
   return (
     <div>
-      <div>LatestPage</div>
+      <div className="heading">
+        <h2>Latest movies</h2>
+      </div>
       <div className="main-container">
         {content}
-        {isFetchingNextPage && <p>Loading More Posts...</p>}
+        {isFetchingNextPage && <p>Loading More Movies...</p>}
       </div>
       <ScrollButton />
     </div>

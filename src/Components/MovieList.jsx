@@ -35,7 +35,7 @@ function MovieList() {
     <>
       <div>
         <section className="heading">
-          <h1>Trending movies</h1>
+          <h1 >Trending movies</h1>
           <SearchBar searchTerm={searchTerm} setSearchTerm={setSearchTerm}/>
 
           {fetching && (

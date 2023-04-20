@@ -674,8 +674,8 @@ li:last-child::after{
   align-items: center;
   justify-content: center;
   margin-top: 70px;
-  background-color: white;
-  border-style: 3px solid white;
+  /* background-color: white; */
+  /* border-style: 3px solid white; */
   /* border-radius: 20px */
 }
 
@@ -768,4 +768,51 @@ li:last-child::after{
   z-index: 1;
   cursor: pointer;
   color: red;
+}
+
+/* back-button and animation */
+
+.back-button {
+  font-size: 20px;
+  padding: 10px;
+  font-family: "Exo 2", sans-serif;
+  background: orange;
+  transition: background 0.3s ease-out;
+  
+
+}
+
+.back-button a{
+  list-style: none;
+  text-decoration: none;
+}
+
+.back-button:hover {
+  background: orange;
+}
+
+.back-button:hover .chevron-left {
+  transform: translateX(4px);
+}
+
+.back-button  .chevron-left {
+  margin-left: 10px;
+  transform: translateX(0);
+  transition: transform 0.3s ease-out;
+}
+
+.back-btn{
+  color: black;
+  width: 100px;
+  display: inline-block;
+  margin-top: 10px
+}
+
+.back-btn:hover{
+  color: black;
+  text-shadow: none;
+}
+.images-container::after{
+  content: " ";
+  width: 820px;
 }
