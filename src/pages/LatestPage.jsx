@@ -3,6 +3,7 @@ import Post from "../Components/Post";
 // import { getUpcomingMovies } from "./api/Axios";
 import { getUpcomingMovies } from "../api/Axios";
 import { useInfiniteQuery } from "react-query";
+import ScrollButton from "../Components/ScrollButton";
 
 function LatestPage() {
   const {
@@ -68,6 +69,7 @@ function LatestPage() {
         {content}
         {isFetchingNextPage && <p>Loading More Posts...</p>}
       </div>
+      <ScrollButton />
     </div>
   );
 }
