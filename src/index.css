@@ -1,6 +1,19 @@
 /* @import url("https://fonts.googleapis.com/css2?family=Exo+2&display=swap"); */
 @import url("https://fonts.googleapis.com/css2?family=Exo+2&family=Monoton&display=swap");
 
+
+.for_dark_them{
+  --background-color:black;
+  --text-color: white;
+  --light-gray: rgb(51 51 51);
+  --red: red;
+  --overlay:rgba(0, 0, 0, 0.7);
+  --card-text:orange;
+  --timestamp: #536471;
+  --actions: #8b4000;
+
+}
+
 * {
   box-sizing: border-box;
   margin: 0;
