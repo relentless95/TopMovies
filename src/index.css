@@ -81,6 +81,7 @@ body {
   border-width: 1px;
   border-bottom-color: rgb(51 51 51);
   position: fixed;
+  
 }
 .navbar li,
 .navbar a {
@@ -94,6 +95,13 @@ body {
   /* margin-left: 50px; */
   font-size: 1.2rem;
 }
+
+.navbar ul{
+  margin-right: 40px;
+  display: flex;
+  align-items: center;
+}
+
 
 a:hover {
   text-shadow: 1px 0px 3px red;

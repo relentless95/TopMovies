@@ -14,6 +14,8 @@ import ExplorePage from "./pages/ExplorePage";
 import Footer from "./Components/Footer";
 import InfoPage from "./pages/InfoPage";
 import LatestPage from "./pages/LatestPage";
+// import { CgSun } from "react-icons/cg";
+// import { HiMoon } from "react-icons/hi";
 
 export const ThemeContext = createContext(null);
 
@@ -23,11 +25,21 @@ function App() {
   // const [count, setCount] = useState(0)
   // const [comments,setComments] = useState(comments)
   const [theme, setTheme] = useState("dark");
+  // const [icon, setIcon] = useState(CgSun)
+
+  const toggleTheme = () => {
+    setTheme((curr) => (curr === "dark" ? "light" : "dark"));
+  };
+
+  // const toggleIcon = () => {
+  //   console.log("clicked on icon")
+  //   setIcon((curr) => (curr === HiMoon ? CgSun : HiMoon));
+  // };
 
   return (
     <div className="App">
       <ThemeContext.Provider value={{ theme, toggleTheme }}>
-        <NavBar />
+        <NavBar toggleTheme={toggleTheme} />
         {/* <MovieList/> */}
         <Routes>
           <Route path="/" element={<ExplorePage />} />

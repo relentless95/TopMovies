@@ -1,7 +1,17 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link, NavLink } from "react-router-dom";
+import { CgSun } from "react-icons/cg";
+import { HiMoon } from "react-icons/hi";
 
-function NavBar() {
+function NavBar({toggleTheme}) {
+  const [icon, setIcon] = useState(CgSun)
+  
+  const toggleIcon = () => {
+    console.log("clicked on the icon")
+
+    setIcon((curr) => (curr === CgSun ?  HiMoon: CgSun));
+    // setTheme2((curr) => (curr === "lighter" ? "darker" : "lighter"));
+  };
   return (
     <>
       <nav className="navbar">
@@ -18,6 +28,7 @@ function NavBar() {
           <NavLink to="/about" className={({isActive})=> isActive ? "selected": ""}> About</NavLink>
           <NavLink to="/latest" className={({isActive})=> isActive ? "selected": ""}>Latest Movies</NavLink>
           <NavLink to="/contactUs" className={({isActive})=> isActive ? "selected": ""}>Contact Us</NavLink>
+          {icon === CgSun? <HiMoon onClick={toggleIcon}/>:<CgSun onClick={toggleIcon}/>}
 
         </ul>
       </nav>
