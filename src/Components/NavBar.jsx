@@ -5,13 +5,13 @@ import { HiMoon } from "react-icons/hi";
 import { ThemeContext } from "../utils/Theme";
 
 function NavBar() {
-  const [icon, setIcon] = useState(CgSun);
+  const [icon, setIcon] = useState(HiMoon);
   const { theme, toggleTheme } = useContext(ThemeContext);
 
   const toggleIcon = () => {
     console.log("clicked on the icon");
 
-    setIcon((curr) => (curr === CgSun ? HiMoon : CgSun));
+    setIcon((curr) => (curr === HiMoon ? CgSun : HiMoon));
     // setTheme2((curr) => (curr === "lighter" ? "darker" : "lighter"));
   };
   return (
@@ -53,15 +53,15 @@ function NavBar() {
           >
             Contact Us
           </NavLink>
-          {icon === CgSun ? (
-            <HiMoon
+          {icon === HiMoon ? (
+            <CgSun
               onClick={() => {
                 toggleIcon();
                 toggleTheme();
               }}
             />
           ) : (
-            <CgSun
+            <HiMoon
               onClick={() => {
                 toggleIcon();
                 toggleTheme();

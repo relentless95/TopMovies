@@ -42,6 +42,7 @@ function App() {
 
   return (
     <div className={`${theme}`}>
+      <div className="super-main-container">
       {/* <ThemeContext.Provider value={{ theme, toggleTheme }}> */}
       <NavBar />
       {/* <MovieList/> */}
@@ -59,6 +60,7 @@ function App() {
       </Routes>
       <Footer />
       {/* </ThemeContext.Provider> */}
+      </div>
     </div>
   );
 }

@@ -10,6 +10,7 @@
   --card-text: orange;
   --timestamp: #536471;
   --actions: #8b4000;
+  transition: all 1s ease-out;
 }
 
 .dark-theme {
@@ -21,6 +22,7 @@
   --card-text: orange;
   --timestamp: #536471;
   --actions: #8b4000;
+  transition: all 1s ease-out;
 }
 
 .light-theme {
@@ -32,6 +34,7 @@
   --card-text: #323a43;
   --timestamp: #536471;
   --actions: #8b4000;
+  transition: all 1s ease-out;
 }
 
 * {
@@ -40,13 +43,20 @@
   padding: 0;
 }
 
-
 body {
   font-family: "Exo 2", sans-serif;
   margin: 0 auto;
   /* padding: 0; */
+  /* background-color: var(--background-color);
+  color: var(--text-color); */
+  color: var(--text-color); 
+
+}
+
+.super-main-container {
   background-color: var(--background-color);
   color: var(--text-color);
+  transition: all 1s ease-out;
 }
 
 .error-page {
@@ -102,6 +112,7 @@ body {
   border-width: 1px;
   border-bottom-color: var(--light-gray);
   position: fixed;
+  transition: all 1s ease-out;
 }
 .navbar li,
 .navbar a {
