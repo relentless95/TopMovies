@@ -1,40 +1,37 @@
 /* @import url("https://fonts.googleapis.com/css2?family=Exo+2&display=swap"); */
 @import url("https://fonts.googleapis.com/css2?family=Exo+2&family=Monoton&display=swap");
 
-:root{
-  --background-color:black;
+:root {
+  --background-color: black;
   --text-color: white;
   --light-gray: rgb(51 51 51);
   --red: red;
-  --overlay:rgba(0, 0, 0, 0.7);
-  --card-text:orange;
+  --overlay: rgba(0, 0, 0, 0.7);
+  --card-text: orange;
   --timestamp: #536471;
-  --actions: #8b4000; 
+  --actions: #8b4000;
 }
 
-
-.dark_theme{
-  --background-color:black;
+.dark-theme {
+  --background-color: black;
   --text-color: white;
   --light-gray: rgb(51 51 51);
   --red: red;
-  --overlay:rgba(0, 0, 0, 0.7);
-  --card-text:orange;
+  --overlay: rgba(0, 0, 0, 0.7);
+  --card-text: orange;
   --timestamp: #536471;
-  --actions: #8b4000; 
+  --actions: #8b4000;
 }
 
-
-.light_theme{
-  --background-color:	#D3D3D3;
+.light-theme {
+  --background-color: #d3d3d3;
   --text-color: black;
   --light-gray: rgb(51 51 51);
-  --red: 	#ADD8E6;
-  --overlay:rgba(0, 0, 0, 0.7);
-  --card-text:#323a43;
+  --red: #add8e6;
+  --overlay: rgba(0, 0, 0, 0.7);
+  --card-text: #323a43;
   --timestamp: #536471;
-  --actions: #8b4000; 
-
+  --actions: #8b4000;
 }
 
 * {
@@ -43,12 +40,13 @@
   padding: 0;
 }
 
+
 body {
   font-family: "Exo 2", sans-serif;
   margin: 0 auto;
   /* padding: 0; */
   background-color: var(--background-color);
-  color: white;
+  color: var(--text-color);
 }
 
 .error-page {
@@ -95,22 +93,21 @@ body {
   display: flex;
   justify-content: space-between;
   background-color: /*#28130f*/ var(--background-color);
-  color: white;
+  color: var(--text-color);
   width: 100%;
   height: 70px;
   z-index: 4;
   align-items: center;
   border-bottom: solid;
   border-width: 1px;
-  border-bottom-color: rgb(51 51 51);
+  border-bottom-color: var(--light-gray);
   position: fixed;
-  
 }
 .navbar li,
 .navbar a {
   list-style: none;
   text-decoration: none;
-  color: white;
+  color: var(--text-color);
   /* display: inline-block; */
   /* margin-top:20px; */
   margin-bottom: 0px;
@@ -119,15 +116,14 @@ body {
   font-size: 1.2rem;
 }
 
-.navbar ul{
+.navbar ul {
   margin-right: 40px;
   display: flex;
   align-items: center;
 }
 
-
 a:hover {
-  text-shadow: 1px 0px 3px red;
+  text-shadow: 1px 0px 3px var(--red);
 }
 .navbar .logo {
   margin-left: 30px;
@@ -138,10 +134,10 @@ a:hover {
 }
 
 .selected {
-  text-shadow: 1px 0px 3px red;
+  text-shadow: 1px 0px 3px var(--red);
   color: #fff;
   border-bottom: rgba(255, 255, 2555, 0.639) solid 2px;
-  border-bottom-color: red;
+  border-bottom-color: var(--red);
   padding-bottom: 2px;
 }
 
@@ -169,7 +165,7 @@ video {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  color: white;
+  color: var(--text-color);
   /* z-index:  */
   margin-top: 70px;
   /* background-color: red; */
@@ -183,7 +179,7 @@ video {
   border-radius: 20px;
   list-style: none;
   text-decoration: none;
-  color: red;
+  color: var(--red);
 }
 
 .content a:hover {
@@ -208,12 +204,12 @@ video {
   width: 100%;
   height: 90%;
   margin-top: 70px;
-  background-color: rgba(0, 0, 0, 0.7);
+  background-color: var(--overlay);
   /* z-index:1 ; */
 }
 
 .footer {
-  border-top-color: rgb(51 51 51);
+  border-top-color: rgb(51 51 51var (--light-gray));
   /* border-top: 1px; */
   border-width: 1px;
   border-top-style: solid;
@@ -261,7 +257,7 @@ video {
   padding: 7px;
   text-align: center;
   /* background: #fafafafa */
-  color: orange;
+  color: var(--card-text);
 }
 
 .card-content > p:first-of-type {
@@ -277,7 +273,7 @@ video {
   display: flex;
   justify-content: space-between;
   font-size: 0.7em;
-  color: orange;
+  color: var(--card-text);
   /* border-bottom: 1px solid rgb(51 51 51); */
   /* align-items: center; */
 }
@@ -304,20 +300,20 @@ video {
 }
 
 .card-button:hover {
-  background-color: red;
+  background-color: var(--red);
   color: var(--background-color);
 } */
 
 .movie-title {
   text-decoration: none;
-  color: orange;
+  color: var(--card-text);
   cursor: pointer;
 }
 
 .movie-title p:hover {
   text-shadow: none;
   cursor: pointer;
-  color: white;
+  color: var(--text-color);
 }
 
 /* end of css for the movies card */
@@ -407,7 +403,7 @@ div .name {
 }
 
 .timestamp {
-  color: #536471;
+  color: var(--timestamp);
   font-size: 1.1rem;
 }
 
@@ -438,12 +434,12 @@ div .name {
 .actions > button {
   padding: 10px;
   font-family: "Exo 2", sans-serif;
-  background-color: orange;
+  background-color: var(--card-text);
   border-style: none;
 }
 
 .actions > button:hover {
-  background-color: #8b4000;
+  background-color: var(--actions);
 }
 
 /* comment-section */
@@ -451,7 +447,7 @@ div .name {
   display: flex;
   flex-direction: column;
   max-width: 60%;
-  border: 1px solid rgb(51 51 51);
+  border: 1px solid var(--light-gray);
   padding: 10px;
   gap: 10px;
   justify-content: center;
@@ -462,7 +458,7 @@ div .name {
 
 .comment-section > p {
   font-size: 40px;
-  color: orange;
+  color: var(--card-text);
   margin-bottom: 30px;
 }
 textarea {
@@ -480,13 +476,13 @@ textarea {
   font-family: "Exo 2", sans-serif;
   margin-bottom: 30px;
   margin-top: 20px;
-  background-color: orange;
+  background-color: var(--card-text);
   border-style: none;
   font-weight: bold;
 }
 
 .comment-section button:hover {
-  background-color: #8b4000;
+  background-color: var(--actions);
 }
 
 /* searchbar css */
@@ -515,7 +511,7 @@ textarea {
 .search-items > .search-icon {
   width: 25px;
   max-width: 25px;
-  background-color: red;
+  background-color: revar(--red);
   height: 26px;
   margin-top: 20px;
   margin-bottom: 30px;
@@ -649,7 +645,7 @@ li:last-child::after{
   justify-content: left;
   align-items: center;
   /* border: 1px solid white; */
-  color: orange;
+  color: var(--card-text);
 }
 
 .movie-overview {
@@ -686,7 +682,7 @@ li:last-child::after{
 }
 .trailer-button {
   padding: 20px;
-  background-color: orange;
+  background-color: var(--card-text);
   /* position: absolute; */
   /* top: 10%; */
   /* left: 30% */
@@ -792,7 +788,7 @@ li:last-child::after{
 }
 
 .actorcard-content > p {
-  color: rgb(51 51 51);
+  color: var(--light-gray);
 }
 
 .center-spinner {
@@ -810,7 +806,7 @@ li:last-child::after{
   font-size: 3rem;
   z-index: 1;
   cursor: pointer;
-  color: red;
+  color: var(--red);
 }
 
 /* back-button and animation */
@@ -819,43 +815,41 @@ li:last-child::after{
   font-size: 20px;
   padding: 10px;
   font-family: "Exo 2", sans-serif;
-  background: orange;
+  background: var(--card-text);
   transition: background 0.3s ease-out;
-  
-
 }
 
-.back-button a{
+.back-button a {
   list-style: none;
   text-decoration: none;
 }
 
 .back-button:hover {
-  background: orange;
+  background: var(--card-text);
 }
 
 .back-button:hover .chevron-left {
   transform: translateX(4px);
 }
 
-.back-button  .chevron-left {
+.back-button .chevron-left {
   margin-left: 10px;
   transform: translateX(0);
   transition: transform 0.3s ease-out;
 }
 
-.back-btn{
+.back-btn {
   color: var(--background-color);
   width: 100px;
   display: inline-block;
-  margin-top: 10px
+  margin-top: 10px;
 }
 
-.back-btn:hover{
+.back-btn:hover {
   color: var(--background-color);
   text-shadow: none;
 }
-.images-container::after{
+.images-container::after {
   content: " ";
   width: 820px;
 }

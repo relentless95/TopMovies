@@ -1,15 +1,17 @@
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 import { Link, NavLink } from "react-router-dom";
 import { CgSun } from "react-icons/cg";
 import { HiMoon } from "react-icons/hi";
+import { ThemeContext } from "../utils/Theme";
 
-function NavBar({toggleTheme}) {
-  const [icon, setIcon] = useState(CgSun)
-  
+function NavBar() {
+  const [icon, setIcon] = useState(CgSun);
+  const { theme, toggleTheme } = useContext(ThemeContext);
+
   const toggleIcon = () => {
-    console.log("clicked on the icon")
+    console.log("clicked on the icon");
 
-    setIcon((curr) => (curr === CgSun ?  HiMoon: CgSun));
+    setIcon((curr) => (curr === CgSun ? HiMoon : CgSun));
     // setTheme2((curr) => (curr === "lighter" ? "darker" : "lighter"));
   };
   return (
@@ -17,19 +19,55 @@ function NavBar({toggleTheme}) {
       <nav className="navbar">
         <div>
           {/* <h1>TopMovies</h1> */}
-          <Link to="/"><img src={"/images/logo.png"} alt="logo" className="logo"/></Link>
+          <Link to="/">
+            <img src={"/images/logo.png"} alt="logo" className="logo" />
+          </Link>
         </div>
         <ul>
           {/* <Link to="/">Home</Link>
           <Link to="/about">About</Link>
           <Link to="/contactUs">Contact Us</Link> */}
 
-          <NavLink to="/home" className={({isActive})=> isActive ? "selected": ""}>Home</NavLink>
-          <NavLink to="/about" className={({isActive})=> isActive ? "selected": ""}> About</NavLink>
-          <NavLink to="/latest" className={({isActive})=> isActive ? "selected": ""}>Latest Movies</NavLink>
-          <NavLink to="/contactUs" className={({isActive})=> isActive ? "selected": ""}>Contact Us</NavLink>
-          {icon === CgSun? <HiMoon onClick={toggleIcon}/>:<CgSun onClick={toggleIcon}/>}
-
+          <NavLink
+            to="/home"
+            className={({ isActive }) => (isActive ? "selected" : "")}
+          >
+            Home
+          </NavLink>
+          <NavLink
+            to="/about"
+            className={({ isActive }) => (isActive ? "selected" : "")}
+          >
+            {" "}
+            About
+          </NavLink>
+          <NavLink
+            to="/latest"
+            className={({ isActive }) => (isActive ? "selected" : "")}
+          >
+            Latest Movies
+          </NavLink>
+          <NavLink
+            to="/contactUs"
+            className={({ isActive }) => (isActive ? "selected" : "")}
+          >
+            Contact Us
+          </NavLink>
+          {icon === CgSun ? (
+            <HiMoon
+              onClick={() => {
+                toggleIcon();
+                toggleTheme();
+              }}
+            />
+          ) : (
+            <CgSun
+              onClick={() => {
+                toggleIcon();
+                toggleTheme();
+              }}
+            />
+          )}
         </ul>
       </nav>
       <div className="spacer"></div>
