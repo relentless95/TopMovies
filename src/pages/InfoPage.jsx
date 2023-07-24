@@ -9,6 +9,8 @@ import {
   faCirclePlay,
   faStar,
 } from "@fortawesome/free-solid-svg-icons";
+import { useNavigate } from "react-router-dom";
+import MovieImages from "../Components/MovieImages";
 
 function InfoPage() {
   const { movieId } = useParams();
@@ -23,6 +25,7 @@ function InfoPage() {
   const [isfetchingCredits, setFetchingCredits] = useState(true);
   const [isfetchingVideos, setFetchingVideos] = useState(true);
   const [isfetchingImages, setFetchingImages] = useState(true);
+  const navigate = useNavigate();
 
   const API_KEY = import.meta.env.VITE_API_KEY;
 
@@ -149,94 +152,95 @@ function InfoPage() {
   // console.log("videosArr is: ",videosArr)
 
   return (
-    <div className="info-main-container">
-      {/* <h1>InfoPage</h1> */}
-      {isfetchingMovies &&
-        isfetchingCredits &&
-        isfetchingVideos &&
-        isfetchingImages && (
-          <div className="center-spinner">
-            <img
-              src={"/images/spinner2.gif"}
-              alt="spinner"
-              className="spinner"
-            />
-          </div>
-        )}
+    <section className="home-container">
+      <div className="info-main-container">
+        {/* <h1>InfoPage</h1> */}
+        {isfetchingMovies &&
+          isfetchingCredits &&
+          isfetchingVideos &&
+          isfetchingImages && (
+            <div className="center-spinner">
+              <img
+                src={"/images/spinner2.gif"}
+                alt="spinner"
+                className="spinner"
+              />
+            </div>
+          )}
 
-      {!isfetchingMovies &&
-        !isfetchingCredits &&
-        !isfetchingVideos &&
-        !isfetchingImages && (
-          // trailer.length > 0 &&
-          // credits !== undefined &&
-          // producers.length > 0 &&
-          // movieImages.length > 0 &&
-          <>
-            <div className="details-container">
-              <div>
-                <img
-                  src={
-                    "https://image.tmdb.org/t/p/original" +
-                    `${oneMovie.poster_path}`
-                  }
-                  className="movie-image"
-                  // style={{ width: "300px", height: "400px" }}
-                />
-              </div>
-              <div className="text-details">
-                <h1 className="details-title">{oneMovie.title}</h1>
-                <div className="movie-xtics">
-                  <span>
-                    movie rating <FontAwesomeIcon icon={faStar} />
-                    {Math.round(
-                      ((oneMovie.vote_count / (oneMovie.vote_count + 25000)) *
-                        oneMovie.vote_average +
-                        (25000 / (oneMovie.vote_count + 25000)) * 6.9) *
-                        10
-                    ) / 10}
-                  </span>
-                  <span>{oneMovie.release_date}</span>
-                  <span>
-                    <div>
-                      {oneMovie.genres.map((genre) => {
-                        return (
-                          <p key={genre.id} className="tags">
-                            {genre.name}
-                          </p>
-                        );
-                      })}
-                    </div>
-                  </span>
+        {!isfetchingMovies &&
+          !isfetchingCredits &&
+          !isfetchingVideos &&
+          !isfetchingImages && (
+            // trailer.length > 0 &&
+            // credits !== undefined &&
+            // producers.length > 0 &&
+            // movieImages.length > 0 &&
+            <>
+              <div className="details-container">
+                <div>
+                  <img
+                    src={
+                      "https://image.tmdb.org/t/p/original" +
+                      `${oneMovie.poster_path}`
+                    }
+                    className="movie-image card-image"
+                    // style={{ width: "300px", height: "400px" }}
+                  />
                 </div>
+                <div className="text-details">
+                  <h1 className="details-title">{oneMovie.title}</h1>
+                  <div className="movie-xtics">
+                    <span>
+                      movie rating <FontAwesomeIcon icon={faStar} />
+                      {Math.round(
+                        ((oneMovie.vote_count / (oneMovie.vote_count + 25000)) *
+                          oneMovie.vote_average +
+                          (25000 / (oneMovie.vote_count + 25000)) * 6.9) *
+                          10
+                      ) / 10}
+                    </span>
+                    <span>{oneMovie.release_date}</span>
+                    <span>
+                      <div>
+                        {oneMovie.genres.map((genre) => {
+                          return (
+                            <p key={genre.id} className="tags">
+                              {genre.name}
+                            </p>
+                          );
+                        })}
+                      </div>
+                    </span>
+                  </div>
 
-                <div className="movie-overview">
-                  <p>synopsis: </p>
+                  <div className="movie-overview">
+                    <p>synopsis: </p>
 
-                  <p>{oneMovie.overview}</p>
-                </div>
+                    <p>{oneMovie.overview}</p>
+                  </div>
 
-                <div className="runtime">
-                  <p>runtime: {oneMovie.runtime} min</p>
-                </div>
+                  <div className="runtime">
+                    <p>runtime: {oneMovie.runtime} min</p>
+                  </div>
 
-                <h3 className="crew">Featured Crew</h3>
-                <div className="crew-members">
-                  {credits?.crew.length == 0 ? (
-                    <h1>Nothing in here</h1>
-                  ) : (
-                    <>
-                      {credits?.crew.slice(0, 5).map((member, index) => {
-                        return (
-                          <div key={index}>
-                            <p>{member.name}</p>
-                            <p>{member.job}</p>
-                          </div>
-                        );
-                      })}
-                    </>
-                  )}
-                  {/* {credits &&
+                  <h3 className="crew">Featured Crew</h3>
+                  <div className="crew-members">
+                    {credits?.crew.length == 0 ? (
+                      <h1>Nothing in here</h1>
+                    ) : (
+                      <>
+                        {credits?.crew.slice(0, 5).map((member, index) => {
+                          return (
+                            <div key={index}>
+                              <p>{member.name}</p>
+                              <p>{member.job}</p>
+                            </div>
+                          );
+                        })}
+                      </>
+                    )}
+                    {/* {credits &&
                   credits?.crew.slice(0, 5).map((member, index) => {
                     return (
                       <div key={index}>
@@ -245,7 +249,7 @@ function InfoPage() {
                       </div>
                     );
                   })} */}
-                  {/* {producers.length > 0 &&
+                    {/* {producers.length > 0 &&
                     producers.slice(0, 3).map((obj) => {
                       return (
                         <div key={obj.id}>
@@ -253,20 +257,20 @@ function InfoPage() {
                         </div>
                       );
                     })} */}
-                </div>
-                <div className="trailer-link">
-                  <button className="trailer-button">
-                    {trailer.length == 0 ? (
-                      <h1>Link not available</h1>
-                    ) : (
-                      <a
-                        href={`https://www.youtube.com/watch?v=${trailer[0]?.key}`}
-                        target="_blank"
-                      >
-                        <FontAwesomeIcon icon={faCirclePlay} /> Watch trailer
-                      </a>
-                    )}
-                    {/* {trailer.length > 0 && (
+                  </div>
+                  <div className="trailer-link">
+                    <button className="trailer-button">
+                      {trailer.length == 0 ? (
+                        <h1>Link not available</h1>
+                      ) : (
+                        <a
+                          href={`https://www.youtube.com/watch?v=${trailer[0]?.key}`}
+                          target="_blank"
+                        >
+                          <FontAwesomeIcon icon={faCirclePlay} /> Watch trailer
+                        </a>
+                      )}
+                      {/* {trailer.length > 0 && (
                       <a
                         href={`https://www.youtube.com/watch?v=${trailer[0]["key"]}`}
                         target="_blank"
@@ -274,26 +278,26 @@ function InfoPage() {
                         <FontAwesomeIcon icon={faCirclePlay} /> Watch trailer
                       </a>
                     )} */}
-                  </button>
+                    </button>
+                  </div>
                 </div>
               </div>
-            </div>
-            <div className="trailer-section">
-              <h1>Watch the trailer here</h1>
-              {trailer.length == 0 ? (
-                <h1>Video not available</h1>
-              ) : (
-                <div className="video-previewer">
-                  <ReactPlayer
-                    url={`https://www.youtube.com/watch?v=${trailer[0]?.key}`}
-                    playing
-                    controls
-                    volume={0.3}
-                    light={true}
-                  />
-                </div>
-              )}
-              {/* <div className="video-previewer">
+              <div className="trailer-section">
+                <h1>Watch the trailer here</h1>
+                {trailer.length == 0 ? (
+                  <h1>Video not available</h1>
+                ) : (
+                  <div className="video-previewer">
+                    <ReactPlayer
+                      url={`https://www.youtube.com/watch?v=${trailer[0]?.key}`}
+                      playing
+                      controls
+                      volume={0.3}
+                      light={true}
+                    />
+                  </div>
+                )}
+                {/* <div className="video-previewer">
                 <ReactPlayer
                   url={`https://www.youtube.com/watch?v=${trailer[0]["key"]}`}
                   playing
@@ -302,35 +306,35 @@ function InfoPage() {
                   light={true}
                 />
               </div> */}
-            </div>
+              </div>
 
-            <div className="cast-info">
-              <h1>cast info</h1>
-              <div className="info-container">
-                {/* {credits ? <h1>No credits available please refresh</h1> : <></>} */}
-                {credits.cast.slice(0, 5).map((actor) => {
-                  return (
-                    <>
-                      <div className="actor-card" key={actor.id}>
-                        {/* <h6>{actor.profile_path} </h6> */}
-                        {/* {console.log("actor.profile_path", actor.profile_path)} */}
-                        {actor.profile_path == null ? (
-                          <img
-                            src={"/images/Profile_placeholder2.png"}
-                            alt="profile image"
-                            className="actor-image"
-                          />
-                        ) : (
-                          <img
-                            src={
-                              "https://image.tmdb.org/t/p/w185/" +
-                              `${actor.profile_path}`
-                            }
-                            alt="actor"
-                            className="actor-image"
-                          />
-                        )}
-                        {/* <img
+              <div className="cast-info">
+                <h1>cast info</h1>
+                <div className="info-container">
+                  {/* {credits ? <h1>No credits available please refresh</h1> : <></>} */}
+                  {credits.cast.slice(0, 5).map((actor) => {
+                    return (
+                      <>
+                        <div className="actor-card" key={actor.id}>
+                          {/* <h6>{actor.profile_path} </h6> */}
+                          {/* {console.log("actor.profile_path", actor.profile_path)} */}
+                          {actor.profile_path == null ? (
+                            <img
+                              src={"/images/Profile_placeholder2.png"}
+                              alt="profile image"
+                              className="actor-image"
+                            />
+                          ) : (
+                            <img
+                              src={
+                                "https://image.tmdb.org/t/p/w185/" +
+                                `${actor.profile_path}`
+                              }
+                              alt="actor"
+                              className="actor-image"
+                            />
+                          )}
+                          {/* <img
                           src={
                             "https://image.tmdb.org/t/p/w185/" +
                             `${actor.profile_path}`
@@ -338,54 +342,52 @@ function InfoPage() {
                           alt="actor"
                           className="actor-image"
                         /> */}
-                        <div className="actorcard-content">
-                          <h3>{actor.name}</h3>
-                          <p>character: {actor.character}</p>
+                          <div className="actorcard-content">
+                            <h3>{actor.name}</h3>
+                            <p>character: {actor.character}</p>
+                          </div>
                         </div>
-                      </div>
-                    </>
-                  );
-                })}
+                      </>
+                    );
+                  })}
+                </div>
               </div>
-            </div>
-            <h1 className="image-title">images</h1>
-            {movieImages.length == 0 ? (
-              <h1>No images here</h1>
-            ) : (
-              <div className="images-container">
-                {movieImages?.slice(0, 7).map((movie) => {
-                  return (
-                    <img
-                      src={
-                        "https://image.tmdb.org/t/p/w400/" +
-                        `${movie.file_path}`
-                      }
-                    />
-                  );
-                })}
-              </div>
-            )}
-            {/* <div className="images-container">
-              {movieImages.slice(0, 7).map((movie) => {
-                return (
-                  <img
-                    src={
-                      "https://image.tmdb.org/t/p/w400/" + `${movie.file_path}`
-                    }
-                  />
-                );
-              })}
-            </div> */}
-          </>
-        )}
+              <h1 className="image-title">Image gallery</h1>
+              <MovieImages
+                setFetchingImages={setFetchingImages}
+                movieId={movieId}
+              />
+              {/* old methods to get images */}
+              {/* {movieImages.length == 0 ? (
+                <h1>No images here</h1>
+              ) : (
+                <div className="images-container">
+                  {movieImages?.slice(0, 7).map((movie) => {
+                    return (
+                      <img
+                        src={
+                          "https://image.tmdb.org/t/p/w400/" +
+                          `${movie.file_path}`
+                        }
+                      />
+                    );
+                  })}
+                </div>
+              )} */}
+              {/* old method to get images ends here  */}
+            </>
+          )}
 
-      <span className="back-button" title="return to home page">
-        <Link to="/home" className="back-btn">
+        <button
+          onClick={() => navigate(-1)}
+          className="back-button"
+          title="return to home page"
+        >
           Return
           <FontAwesomeIcon icon={faChevronRight} className="chevron-left" />
-        </Link>
-      </span>
-    </div>
+        </button>
+      </div>
+    </section>
   );
 }
 

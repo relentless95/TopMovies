@@ -4,7 +4,9 @@ import MovieList from "../Components/MovieList";
 function HomePage() {
   return (
     <>
-      <section className="home-container">
+      <section
+      className="home-container"
+      >
         <MovieList />
       </section>
     </>
