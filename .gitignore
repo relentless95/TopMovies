@@ -24,3 +24,5 @@ dist-ssr
 *.sw?
 # env file
 .env
+
+genres.json

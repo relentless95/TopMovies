@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import SearchBar from "./SearchBar";
 import Categories from "./Categories";
 import genres from "../genres.json";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion"
 // console.log("the genres are ---->", typeof genres);
 
 //
@@ -94,65 +94,53 @@ function MovieList() {
           filtered.some((curr) =>
             curr.title.toLowerCase().includes(searchTerm.toLowerCase())
           ) ? (
-            <motion.div layout className="main-container">
-              <AnimatePresence>
-                {filtered
-                  .filter((curr) => {
-                    if (searchTerm == "") {
-                      return curr;
-                    }
-                    if (
-                      curr.title
-                        .toLowerCase()
-                        .includes(searchTerm.toLowerCase())
-                    ) {
-                      return curr;
-                    } else {
-                      console.log("not found");
-                    }
-                  })
-                  .map((movie) => {
-                    return (
-                      <motion.div
-                        animate={{ opacity: 1, scale: 1 }}
-                        initial={{ opacity: 0, scale: 0 }}
-                        exit={{ opacity: 0, scale: 0 }}
-                        transition={{ duration: 0.8 }}
-                        layout
-                        className="card"
-                        key={movie.id}
-                      >
-                        <Link to={`/movie/${movie.id}`}>
-                          <img
-                            src={
-                              "https://image.tmdb.org/t/p/original" +
-                              `${movie.poster_path}`
-                            }
-                            alt="image"
-                            className="card-image"
-                          />
+            <div className="main-container">
+              {filtered
+                .filter((curr) => {
+                  if (searchTerm == "") {
+                    return curr;
+                  }
+                  if (
+                    curr.title.toLowerCase().includes(searchTerm.toLowerCase())
+                  ) {
+                    return curr;
+                  } else {
+                    console.log("not found");
+                  }
+                })
+                .map((movie) => {
+                  return (
+                    <div className="card" key={movie.id}>
+                      <Link to={`/movie/${movie.id}`}>
+                        <img
+                          src={
+                            "https://image.tmdb.org/t/p/original" +
+                            `${movie.poster_path}`
+                          }
+                          alt="image"
+                          className="card-image"
+                        />
+                      </Link>
+                      <div className="card-content">
+                        <Link to="/details" className="movie-title">
+                          <p>{movie.title}</p>
                         </Link>
-                        <div className="card-content">
-                          <Link to="/details" className="movie-title">
-                            <p>{movie.title}</p>
-                          </Link>
-                          <p>language: {movie.original_language}</p>
-                          <div className="card-info">
-                            <div>
-                              <FontAwesomeIcon icon={faStar} />
-                              score: {Math.round(movie.vote_average * 10) / 10}
-                            </div>
-                            <div>release date: {movie.release_date}</div>
+                        <p>language: {movie.original_language}</p>
+                        <div className="card-info">
+                          <div>
+                            <FontAwesomeIcon icon={faStar} />
+                            score: {Math.round(movie.vote_average * 10) / 10}
                           </div>
+                          <div>release date: {movie.release_date}</div>
                         </div>
-                        <div className="button-container">
-                          {/* <button className="card-button">more info</button> */}
-                        </div>
-                      </motion.div>
-                    );
-                  })}
-              </AnimatePresence>
-            </motion.div>
+                      </div>
+                      <div className="button-container">
+                        {/* <button className="card-button">more info</button> */}
+                      </div>
+                    </div>
+                  );
+                })}
+            </div>
           ) : (
             <h1 className="heading-container">Nothing found...</h1>
           )}
