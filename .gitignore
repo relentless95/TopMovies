@@ -25,4 +25,5 @@ dist-ssr
 # env file
 .env
 
-genres.json
+# genres.json
+moveList.txt
