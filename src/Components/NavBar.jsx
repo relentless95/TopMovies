@@ -56,12 +56,12 @@ function NavBar() {
               >
                 Home
               </NavLink>
-              <NavLink
+              {/* <NavLink
                 to="/about"
                 className={({ isActive }) => (isActive ? "selected" : "")}
               >
                 About
-              </NavLink>
+              </NavLink> */}
               <NavLink
                 to="/search"
                 className={({ isActive }) => (isActive ? "selected" : "")}
