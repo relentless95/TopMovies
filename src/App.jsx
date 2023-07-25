@@ -15,6 +15,7 @@ import Footer from "./Components/Footer";
 import InfoPage from "./pages/InfoPage";
 import LatestPage from "./pages/LatestPage";
 import { ThemeContext } from "./utils/Theme";
+import SearchPage from "./pages/SearchPage";
 
 // import { CgSun } from "react-icons/cg";
 // import { HiMoon } from "react-icons/hi";
@@ -43,23 +44,24 @@ function App() {
   return (
     <div className={`${theme}`}>
       <div className="super-main-container">
-      {/* <ThemeContext.Provider value={{ theme, toggleTheme }}> */}
-      <NavBar />
-      {/* <MovieList/> */}
-      <Routes>
-        <Route path="/" element={<ExplorePage />} />
+        {/* <ThemeContext.Provider value={{ theme, toggleTheme }}> */}
+        <NavBar />
+        {/* <MovieList/> */}
+        <Routes>
+          <Route path="/" element={<ExplorePage />} />
 
-        <Route path="/home" element={<HomePage />} />
-        <Route path="/about" element={<AboutPage />} />
-        <Route path="/details" element={<DetailsPage />} />
-        <Route path="/movie/:movieId" element={<InfoPage />} />
-        <Route path="/latest" element={<LatestPage />} />
-        <Route path="/contactUs" element={<ContactPage />} />
-        <Route path="/contactUs" element={<ContactPage />} />
-        <Route path="*" element={<ErrorPage />} />
-      </Routes>
-      <Footer />
-      {/* </ThemeContext.Provider> */}
+          <Route path="/home" element={<HomePage />} />
+          <Route path="/about" element={<AboutPage />} />
+          <Route path="/details" element={<DetailsPage />} />
+          <Route path="/movie/:movieId" element={<InfoPage />} />
+          <Route path="/latest" element={<LatestPage />} />
+          <Route path="/contactUs" element={<ContactPage />} />
+          <Route path="/contactUs" element={<ContactPage />} />
+          <Route path="*" element={<ErrorPage />} />
+          <Route path="/search" element={<SearchPage />} />
+        </Routes>
+        <Footer />
+        {/* </ThemeContext.Provider> */}
       </div>
     </div>
   );

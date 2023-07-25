@@ -60,8 +60,13 @@ function NavBar() {
                 to="/about"
                 className={({ isActive }) => (isActive ? "selected" : "")}
               >
-                {" "}
                 About
+              </NavLink>
+              <NavLink
+                to="/search"
+                className={({ isActive }) => (isActive ? "selected" : "")}
+              >
+                search
               </NavLink>
               <NavLink
                 to="/latest"

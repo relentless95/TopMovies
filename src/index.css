@@ -17,6 +17,8 @@
   --shadow-1: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.6);
   --shadow-3: 0 10px 15px -3x rgba(0, 0, 0, 0.1),
     0 4px 6px -2px rgba(0, 0, 0, 0.05);
+  --max-width: 1120px;
+
 }
 
 .dark-theme {
@@ -1734,4 +1736,36 @@ li:last-child::after{
 
 .popup-media span:hover {
   color: var(--red);
+}
+
+.search-form {
+  width: 90vw;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  margin-top: 5rem;
+  margin-bottom: 3rem;
+  border: 1px solid red;
+}
+
+.form-input {
+  width: 100%;
+  border: transparent;
+  max-width: 600px;
+  background: var(--text-color);
+  padding: 1rem;
+  font-size: 1rem;
+  border-radius: var(--border-radius);
+  /* color: var(--) */
+  letter-spacing: var(--letterSpacing);
+  margin-top: 1rem;
+  font-family: "Exo 2", sans-serif;
+
+}
+
+.error {
+  color: var(--red);
+  text-transform: capitalize;
+  padding-top: 0.5rem;
+  letter-spacing: var(--letterSpacing);
+  font-family: "Exo 2", sans-serif;
 }

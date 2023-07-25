@@ -29,7 +29,9 @@ const MovieImages = ({ setFetchingImages, movieId }) => {
     <div>
       {console.log("movie images--->", movieImages)}
       {movieImages.length == 0 ? (
-        <h1>No images here</h1>
+        <h1 style={{ textAlign: "center" }}>
+          No images found
+        </h1>
       ) : (
         <div className="images-container-new">
           {movieImages?.slice(0, 7).map((movie) => {
@@ -59,7 +61,6 @@ const MovieImages = ({ setFetchingImages, movieId }) => {
         <span onClick={() => setTarget(null)}>&times;</span>
         {target == null ? (
           <div>
-            {console.log(target)}
             <h1>No thing here</h1>
           </div>
         ) : (

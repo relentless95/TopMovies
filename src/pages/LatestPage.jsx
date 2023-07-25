@@ -1,6 +1,5 @@
 import React, { useRef, useCallback } from "react";
 import Post from "../Components/Post";
-// import { getUpcomingMovies } from "./api/Axios";
 import { getUpcomingMovies } from "../api/Axios";
 import { useInfiniteQuery } from "react-query";
 import ScrollButton from "../Components/ScrollButton";
