@@ -1751,7 +1751,7 @@ li:last-child::after{
   width: 100%;
   border: transparent;
   max-width: 600px;
-  background: white;
+  /* background: white; */
   padding: 1rem;
   font-size: 1rem;
   border-radius: var(--border-radius);
