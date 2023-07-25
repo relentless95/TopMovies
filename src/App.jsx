@@ -15,7 +15,7 @@ import Footer from "./Components/Footer";
 import InfoPage from "./pages/InfoPage";
 import LatestPage from "./pages/LatestPage";
 import { ThemeContext } from "./utils/Theme";
-import SearchPage from "./pages/SearchPage";
+import SearchPageNew from "./pages/SearchPageNew";
 
 // import { CgSun } from "react-icons/cg";
 // import { HiMoon } from "react-icons/hi";
@@ -58,7 +58,7 @@ function App() {
           <Route path="/contactUs" element={<ContactPage />} />
           <Route path="/contactUs" element={<ContactPage />} />
           <Route path="*" element={<ErrorPage />} />
-          <Route path="/search" element={<SearchPage />} />
+          <Route path="/search" element={<SearchPageNew />} />
         </Routes>
         <Footer />
         {/* </ThemeContext.Provider> */}

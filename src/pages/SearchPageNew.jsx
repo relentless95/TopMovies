@@ -16,11 +16,11 @@ const url = `https://api.themoviedb.org/3/search/movie?api_key=${
 // placeholder image:"/images/placeholder-image.jpg"
 console.log(url);
 
-function SearchPage() {
+function SearchPageNew() {
   const [movies, setMovies] = useState([]);
   const [isFetching, setIsFetching] = useState(true);
   const [error, setError] = useState({ show: false, msg: "" });
-  const [query, setQuery] = useState("bat");
+  const [query, setQuery] = useState("batman");
   const FetchMovies = async (url_address) => {
     setIsFetching(true);
     try {
@@ -136,4 +136,4 @@ function SearchPage() {
   );
 }
 
-export default SearchPage;
+export default SearchPageNew;
