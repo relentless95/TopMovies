@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, Suspense } from "react";
 import axios from "axios";
 
 const API_KEY = import.meta.env.VITE_API_KEY;
@@ -25,6 +25,7 @@ const LandingPage = () => {
         console.log("THIS RESULT", result);
         setData(result);
         console.log("THIS DATA", data);
+        setContent(result)
         setIsFetching(false);
       }
     } catch (error) {
@@ -40,23 +41,31 @@ const LandingPage = () => {
     FetchMovies(apiURL);
   }, []);
 
-  useEffect(()=>{
-    data? setContent(data.results) :  setContent(null);
-  }, [data])
+//   useEffect(()=>{
+//     data? setContent(data) :  setContent(null);
+//   }, [data])
 
   return (
     <section style={{ border: "solid red 1px" }}>
-      {isFetching ? (
-        <img src={"/images/spinner2.gif"} alt="spinner" className="spinner" />
-      ) : (
-        <div>
-          {data.map((movie) => {
-            console.log(movie);
-            const { title: title } = movie;
-            return <p>{title}</p>;
-          })}
-        </div>
-      )}
+      {isFetching ? 
+    //   (
+    //     <img src={"/images/spinner2.gif"} alt="spinner" className="spinner" />
+    //   ) : (
+    //     <div>
+    //       {data.map((movie) => {
+    //         console.log(movie);
+    //         const { title: title } = movie;
+    //         return <p>{title}</p>;
+    //       })}
+    //     </div>
+    //   )
+    <div>
+        <Suspense fallback={<Loader setLoader='true'/>}>
+            <Swiper data={content} read = {"read"}/>
+        </Suspense>
+    </div> : <p>oh oh something went wrong</p>
+      
+      }
     </section>
   );
 };
