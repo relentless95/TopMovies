@@ -50,7 +50,7 @@ function App() {
         {/* <MovieList/> */}
         <Routes>
           <Route path="/" element={<ExplorePage />} />
-          {/* <Route path="/landing" element={<LandingPage />} /> */}
+          <Route path="/landing" element={<LandingPage />} />
 
           <Route path="/home" element={<HomePage />} />
           <Route path="/about" element={<AboutPage />} />

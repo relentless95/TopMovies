@@ -47,7 +47,7 @@ const LandingPage = () => {
 
   return (
     <section style={{ border: "solid red 1px" }}>
-      {isFetching ? 
+      {content && data ? 
     //   (
     //     <img src={"/images/spinner2.gif"} alt="spinner" className="spinner" />
     //   ) : (
@@ -60,7 +60,14 @@ const LandingPage = () => {
     //     </div>
     //   )
     <div>
-        <Suspense fallback={<Loader setLoader='true'/>}>
+        <Suspense fallback={
+        // <Loader setLoader='true'/>
+        <img
+        src={"/images/spinner2.gif"}
+        alt="spinner"
+        className="spinner"
+      />
+    }>{console.log("content : ", content)}
             <Swiper data={content} read = {"read"}/>
         </Suspense>
     </div> : <p>oh oh something went wrong</p>
