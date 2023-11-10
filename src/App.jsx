@@ -16,6 +16,7 @@ import InfoPage from "./pages/InfoPage";
 import LatestPage from "./pages/LatestPage";
 import { ThemeContext } from "./utils/Theme";
 import SearchPageNew from "./pages/SearchPageNew";
+import LandingPage from "./pages/LandingPage";
 
 // import { CgSun } from "react-icons/cg";
 // import { HiMoon } from "react-icons/hi";
@@ -49,6 +50,7 @@ function App() {
         {/* <MovieList/> */}
         <Routes>
           <Route path="/" element={<ExplorePage />} />
+          {/* <Route path="/landing" element={<LandingPage />} /> */}
 
           <Route path="/home" element={<HomePage />} />
           <Route path="/about" element={<AboutPage />} />

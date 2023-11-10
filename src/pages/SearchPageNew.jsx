@@ -21,6 +21,7 @@ function SearchPageNew() {
   const [isFetching, setIsFetching] = useState(true);
   const [error, setError] = useState({ show: false, msg: "" });
   const [query, setQuery] = useState("batman");
+
   const FetchMovies = async (url_address) => {
     setIsFetching(true);
     try {
@@ -46,7 +47,7 @@ function SearchPageNew() {
       setError({ show: false, msg: "" });
     } catch (error) {
       // console.log("an error occurred")
-      console.log("this is ther eroooooorrr", error);
+      console.log("this is the eroooooorrr", error);
     }
 
     // .then((res) => {
