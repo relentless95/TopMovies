@@ -27,19 +27,29 @@ export default ({ data }) => {
     >
       {" "}
       {data &&
-        data.map((item) => { 
-            console.log("inside the map!!!; ", item)
-            const {
+        data.map((item) => {
+          console.log("inside the map!!!; ", item);
+          const {
             id: movieId,
             poster_path: poster,
             title: title,
             release_date: date,
             vote_average: score,
             original_language: language,
-        } = item;
+          } = item;
           return (
             <>
-              <SwiperSlide key={item.id}>{item.poster_path}</SwiperSlide>
+              <SwiperSlide key={item.id}>
+                <div className="card">
+                  <img
+                    src={
+                      "https://image.tmdb.org/t/p/original" + item.poster_path
+                    }
+                    alt="image"
+                    className="card-image"
+                  />
+                </div>
+              </SwiperSlide>
 
               {/* <SwiperSlide>Slide 2</SwiperSlide>
               <SwiperSlide>Slide 3</SwiperSlide>
