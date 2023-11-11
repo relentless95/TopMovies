@@ -8,6 +8,7 @@ import "swiper/css";
 import "swiper/css/navigation";
 import "swiper/css/pagination";
 import "swiper/css/scrollbar";
+import SingleCarouselItem from "./SingleCarouselItem";
 
 // import SingleCarouselItem from "../CarouselCard/SingleCarouselItem";
 
@@ -40,7 +41,7 @@ export default ({ data }) => {
           return (
             <>
               <SwiperSlide key={item.id}>
-                <div className="card">
+                {/* <div className="card">
                   <img
                     src={
                       "https://image.tmdb.org/t/p/original" + item.poster_path
@@ -48,7 +49,8 @@ export default ({ data }) => {
                     alt="image"
                     className="card-image"
                   />
-                </div>
+                </div> */}
+                <SingleCarouselItem data={item} />
               </SwiperSlide>
 
               {/* <SwiperSlide>Slide 2</SwiperSlide>

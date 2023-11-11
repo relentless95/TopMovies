@@ -1048,6 +1048,7 @@ li:last-child::after{
   /* text-shadow: 1px 1px 1px #000; */
 }
 
+/* video previewer needs to be responsive  */
 .video-previewer {
   display: flex;
   align-items: center;
@@ -1055,7 +1056,10 @@ li:last-child::after{
   margin-top: 70px;
   /* background-color: white; */
   /* border-style: 3px solid white; */
-  /* border-radius: 20px */
+  /* border-radius: 20px; */
+  height: 60rem;
+  /* padding: 10px; */
+  border: 1px solid white;
 }
 
 .trailer-section > h1 {
@@ -1768,4 +1772,24 @@ li:last-child::after{
   padding-top: 0.5rem;
   letter-spacing: var(--letterSpacing);
   font-family: "Exo 2", sans-serif;
+}
+
+/* vote bar */
+.circular-vote-bar{
+  width: 50px;
+  background-color: white;
+  border-radius: 50%;
+  height: 50px;
+  padding: 5px;
+}
+
+@media screen and (max-width: 900px){
+  .circular-vote-bar{
+    width: 30px;
+    background-color: rgba(255, 255, 255);
+    border-radius: 50%;
+    height: 30px;
+    padding: 2px;
+
+  }
 }

@@ -288,12 +288,15 @@ function InfoPage() {
                   <h1>Video not available</h1>
                 ) : (
                   <div className="video-previewer">
+                    {/* video previewer needs to be responsive */}
                     <ReactPlayer
                       url={`https://www.youtube.com/watch?v=${trailer[0]?.key}`}
                       playing
                       controls
                       volume={0.3}
                       light={true}
+                      width="80%"
+                      height = "80%"
                     />
                   </div>
                 )}
