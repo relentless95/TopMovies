@@ -1796,8 +1796,8 @@ li:last-child::after{
   position: relative;
   background: rgba(0, 0, 0.95);
   /* what is backdrop filter */
-  backdrop-filter: blur(5.2);
-  -webkit-backdrop-filter: blur(5.2px);
+  /* backdrop-filter: blur(5.2); */
+  backdrop-filter: blur(5.2px);
   overflow: hidden;
   border: 8px solid red;
   /* z-index: 100; */

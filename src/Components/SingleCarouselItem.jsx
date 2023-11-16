@@ -3,12 +3,11 @@ import Vote from "./Vote";
 import { Link } from "react-router-dom";
 
 const SingleCarouselItem = ({ data }) => {
-  const BackgroundImageUrl = `linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,1)100%), url("https://image.tmdb.org/t/p/original" +
-    ${data.backdrop_path})`;
+  const BackgroundImageUrl = `linear-gradient(to bottom, rgba(0,0,0,0) 0%, rgba(0,0,0,1)100%), url("https://image.tmdb.org/t/p/original${data.backdrop_path}")`;
   return (
     <div
       className="singleCarouselItem"
-      style={{ backgroundImage: BackgroundImageUrl }}
+      style={{ backgroundImage: BackgroundImageUrl, padding: "3rem" }}
     >
       <div className="trending-align-css">
         {/* display1 = display  trending-data-container = trending-container*/}
