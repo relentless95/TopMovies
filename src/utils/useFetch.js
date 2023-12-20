@@ -10,7 +10,7 @@ const useFetch = (url) => {
     const fetchData = async () => {
       try {
         const response = await axios.get(url);
-        if (!response.status == "200") {
+        if (response.status !== "200") {
           setError(true);
           setIsLoading(false);
         }

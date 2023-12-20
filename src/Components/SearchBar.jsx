@@ -11,7 +11,7 @@ function SearchBar({ searchTerm, setSearchTerm }) {
         type="text"
         value={searchTerm}
         onChange={(e) => setSearchTerm(e.target.value)}
-        placeholder="filter..."
+        placeholder="search..."
       />
     </div>
   );
