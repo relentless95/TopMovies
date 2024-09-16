@@ -9,6 +9,7 @@ import SearchForm from "../Components/SearchForm";
 //   import.meta.env.VITE_API_KEY
 // }&query=bat&language=en-US`;
 
+// api request methods probably changed
 const url = `https://api.themoviedb.org/3/search/movie?api_key=${
   import.meta.env.VITE_API_KEY
 }`;
